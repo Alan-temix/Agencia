@@ -1,0 +1,25 @@
+thead tr {
+    background-color: black;
+    color: white;
+}
+
+i.bi-plus-circle {
+    padding-right: 10px;
+}
+
+table.table-striped {
+    text-align: center;
+}
+
+button.btn-success {
+    border-radius: 20px;
+}
+
+header {
+    height: 100px;
+    background-color: #0a043c;
+}
+
+.bg-principal {
+    background-color: red;
+}

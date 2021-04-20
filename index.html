@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preeconect" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" as="style">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="preeconect" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" as="style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <title>Agencia de autos</title>
+</head>
+<body>
+    <header>
+    </header>
+    <div class="container">
+        <div class="d-flex justify-content-end py-3">
+            <button class="btn btn-success" onclick="openForm()"><i class="bi bi-plus-circle" style="padding-right: 10px;"></i>Añadir Carro</button>
+        </div>
+        <section class="card d-none" id="form-create-cars">
+            <div class="card-body">
+                <form action="" id="cars-form" onsubmit="event.preventDefault(), messageAction()">
+                    <div class="mb-3">
+                        <label for="brand" class="form-label">Marca</label>
+                        <input type="text" class="form-control" id="brand" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="model" class="form-label">Modelo</label>
+                        <input type="text" class="form-control" id="model" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="color" class="color-label">Color</label>
+                        <input type="text" class="form-control" id="color">
+                    </div>
+                    <div class="mb-3">
+                        <label for="year" class="year-label">Año</label>
+                        <input type="text" class="form-control" id="year">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="price-label">Precio</label>
+                        <input type="text" class="form-control" id="price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="photo" class="photo-label">URL de Fotografia</label>
+                        <input type="text" class="form-control" id="photo">
+                    </div>
+                      <button class="btn btn-primary" id="btn-submmit-form">Guardar</button>
+                      <button class="btn btn-danger" id="btn-submmit-form" onclick="hidenForm()">Cerrar</button>
+                </form>
+            </div>
+        </section>
+
+        <main class="table-responsive">
+            <table class="table table-striped table-bordered table-hover mt-3">
+                <thead class="">
+                    <tr>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Color</th>
+                        <th>Año</th>
+                        <th>Precio</th>
+                        <th>Fotografia</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-cars">
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+</body>
+</html>
