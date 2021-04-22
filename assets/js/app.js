@@ -29,7 +29,7 @@ const printCars = ((dataCars) =>{
                             <td>${car.price}</td>
                             <td><img src="${car.photo}" alt="" width="120px"></td>
                             <td>
-                                <button class="btn btn-danger" onclick="deleteUser(${car.id})"><i class="bi bi-trash"></i> Eliminar</button>
+                                <button class="btn btn-danger" onclick="deleteCar(${car.id})"><i class="bi bi-trash"></i> Eliminar</button>
                                 <button class="btn btn-warning" onclick="showFormEditCar(${car.id})"><i class="bi bi-arrow-repeat"></i> Editar</button>
                             </td>
                         </tr>`;
@@ -83,8 +83,8 @@ const generateId = (()=>{
 
 const deleteCar = ((carID)=>{
     const i = cars.findIndex((car) => car.id === carID);
-    users.splice(i, 1);
-    printUser(cars);
+    cars.splice(i, 1);
+    printCars(cars);
 });
 
 const showFormEditCar = ((carID) =>{
@@ -109,7 +109,7 @@ const editCar = ()=>{
     cars[CARID].price = document.getElementById('price').value;
     resetForm();
     hidenForm();
-    printCar(cars);
+    printCars(cars);
 }
 
 const btnEdit = (()=>{
