@@ -9,8 +9,19 @@ const cars = [
         year: 2019,
         price: '2000usd',
         photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
+    },
+    {
+        id: 1,
+        brand: 'AnyBrand2',
+        model: 'AnyModel2',
+        color: 'red',
+        year: 2020,
+        price: '2000usd',
+        photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
     }
 ];
+
+localStorage.setItem("cars", JSON.stringify(cars));
 
 const CREATE = "create" 
 const EDIT = "edit" 
