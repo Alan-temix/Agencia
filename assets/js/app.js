@@ -21,8 +21,6 @@ const cars = [
     }
 ];
 
-localStorage.setItem("cars", JSON.stringify(cars));
-
 const CREATE = "create" 
 const EDIT = "edit" 
 let CARID = 0;
@@ -47,6 +45,7 @@ const printCars = ((dataCars) =>{
         tbody_content.innerHTML += car_HTML; 
     });
 });
+// printCars(JSON.parse(localStorage.getItem("cars")));
 printCars(cars);
 
 const openForm = ()=> {document.getElementById('form-create-cars').classList.remove('d-none'), btnCreate(), BUTTONSTATUS = 1;};
@@ -77,6 +76,7 @@ const createCar = (()=>{
     }
 
     cars.push(newCar);
+    localStorage.setItem("cars", JSON.stringify(cars));
     printCars(cars);
     resetForm();
     hidenForm();
