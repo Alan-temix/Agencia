@@ -1,25 +1,6 @@
 'use-strict'
 
-const cars = [
-    {
-        id: 0,
-        brand: 'AnyBrand1',
-        model: 'AnyModel1',
-        color: 'blue',
-        year: 2019,
-        price: '2000usd',
-        photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
-    },
-    {
-        id: 1,
-        brand: 'AnyBrand2',
-        model: 'AnyModel2',
-        color: 'red',
-        year: 2020,
-        price: '2000usd',
-        photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
-    }
-];
+let cars = JSON.parse(localStorage.getItem("cars"))
 
 const CREATE = "create" 
 const EDIT = "edit" 
@@ -76,6 +57,7 @@ const createCar = (()=>{
     }
 
     cars.push(newCar);
+    localStorage.clear();
     localStorage.setItem("cars", JSON.stringify(cars));
     printCars(cars);
     resetForm();
@@ -95,6 +77,9 @@ const generateId = (()=>{
 const deleteCar = ((carID)=>{
     const i = cars.findIndex((car) => car.id === carID);
     cars.splice(i, 1);
+    localStorage.clear();
+    localStorage.setItem("cars", JSON.stringify(cars));
+    cars = JSON.parse(localStorage.getItem("cars"));
     printCars(cars);
 });
 
@@ -113,11 +98,14 @@ const showFormEditCar = ((carID) =>{
 });
 
 const editCar = ()=>{
+    cars = JSON.parse(localStorage.getItem("cars"));
     cars[CARID].brand = document.getElementById('brand').value;
     cars[CARID].model = document.getElementById('model').value;
     cars[CARID].color = document.getElementById('color').value;
     cars[CARID].year = document.getElementById('year').value;
     cars[CARID].price = document.getElementById('price').value;
+    localStorage.clear();
+    localStorage.setItem("cars", JSON.stringify(cars));
     resetForm();
     hidenForm();
     printCars(cars);
