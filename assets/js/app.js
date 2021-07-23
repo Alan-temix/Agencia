@@ -9,8 +9,11 @@ let BUTTONSTATUS = 0;
 
 const printCars = ((dataCars) =>{
     const tbody_content = document.getElementById('tbody-cars');
+    const slider_content = document.querySelector('section#slider');
+    slider_content.innerHTML = '';
     tbody_content.innerHTML = '';
     dataCars.forEach((car)=>{
+        const slider_HTML = `<div>${car.model}<div/><div class="slider_image"><img alt="Foto del carro" src="${car.photo}"/></div>`;
         const car_HTML = `<tr>
                             <td>${car.brand}</td>
                             <td>${car.model}</td>
@@ -23,7 +26,8 @@ const printCars = ((dataCars) =>{
                                 <button class="btn btn-warning" onclick="showFormEditCar(${car.id})"><i class="bi bi-arrow-repeat"></i> Editar</button>
                             </td>
                         </tr>`;
-        tbody_content.innerHTML += car_HTML; 
+        tbody_content.innerHTML += car_HTML;
+        slider_content.innerHTML += slider_HTML;
     });
 });
 // printCars(JSON.parse(localStorage.getItem("cars")));
