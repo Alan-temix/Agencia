@@ -45,8 +45,29 @@ const printCars = ((dataCars) =>{
                             </td>
                         </tr>`;
         tbody_content.innerHTML += car_HTML;
-        // slider_content.innerHTML += slider_HTML;
     });
+    for(let i = 0; i < cars.length; i++) {
+        let numberImg = i;
+        let imgSrc;
+    
+        cars[i]['photo'] === '' ? imgSrc = '' : imgSrc = cars[i]['photo'];
+        
+        let carrouselInner = document.querySelector('div.carousel-inner');
+    
+        let imG = document.createElement('img');
+        imG.classList.add('d-block', 'w-100');
+        imG.src = `${imgSrc}`;
+        imG.setAttribute('alt', `${numberImg + 1} slide`);
+    
+        let carrouselItem = document.createElement('div');
+        carrouselItem.classList.add("carousel-item");
+        if(i === 0) {
+            carrouselItem.classList.add("active")
+        }
+    
+        carrouselItem.appendChild(imG);
+        carrouselInner.appendChild(carrouselItem);
+    }
 });
 // printCars(JSON.parse(localStorage.getItem("cars")));
 printCars(cars);
@@ -174,49 +195,3 @@ const messageAction = (()=>{
 
 // carrouselInner.innerHTML += carrouselItem;
 // console.log(carrouselInner)
-
-for(let i = 0; i < cars.length; i++) {
-    let numberImg = i + 1;
-    let imgSrc;
-
-    cars[i]['photo'] === '' ? imgSrc = '' : imgSrc = cars[i]['photo'];
-    
-    let carrouselInner = document.querySelector('div.carousel-inner');
-
-    // let listCarouselIndicators = document.createElement('li');
-    // listCarouselIndicators.setAttribute("data-target", "#carouselExampleIndicators");
-    // listCarouselIndicators.setAttribute("data-slide-to", `${numberImg}`);
-
-    let imG = document.createElement('img');
-    imG.classList.add('d-block', 'w-100');
-    imG.src = `${imgSrc}`;
-    imG.setAttribute('alt', `${numberImg} slide`);
-
-    let carrouselItem = document.createElement('div');
-    carrouselItem.classList.add("carousel-item");
-    if(i === 0) {
-        carrouselItem.classList.add("active")
-    }
-
-    carrouselItem.appendChild(imG);
-    carrouselInner.appendChild(carrouselItem);
-}
-
-// let numberImg = '4';
-// let imgSrc = 'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
-// let carrouselInner = document.querySelector('div.carousel-inner');
-
-// let listCarouselIndicators = document.createElement('li');
-// listCarouselIndicators.setAttribute("data-target", "#carouselExampleIndicators");
-// listCarouselIndicators.setAttribute("data-slide-to", `${numberImg}`);
-
-// let imG = document.createElement('img');
-// imG.classList.add('d-block', 'w-100');
-// imG.src = `${imgSrc}`;
-// imG.setAttribute('alt', `${numberImg} slide`);
-
-// let carrouselItem = document.createElement('div');
-// carrouselItem.classList.add("carousel-item");
-
-// carrouselItem.appendChild(imG);
-// carrouselInner.appendChild(carrouselItem);
