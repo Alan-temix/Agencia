@@ -1,6 +1,27 @@
 'use-strict'
 
-let cars = JSON.parse(localStorage.getItem("cars"))
+// const cars = [
+//     {
+//         id: 0,
+//         brand: 'AnyBrand1',
+//         model: 'AnyModel1',
+//         color: 'blue',
+//         year: 2019,
+//         price: '2000usd',
+//         photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
+//     },
+//     {
+//         id: 1,
+//         brand: 'AnyBrand2',
+//         model: 'AnyModel2',
+//         color: 'red',
+//         year: 2020,
+//         price: '2000usd',
+//         photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
+//     }
+// ];
+
+cars = JSON.parse(localStorage.getItem("cars"))
 
 const CREATE = "create" 
 const EDIT = "edit" 
@@ -9,11 +30,8 @@ let BUTTONSTATUS = 0;
 
 const printCars = ((dataCars) =>{
     const tbody_content = document.getElementById('tbody-cars');
-    const slider_content = document.querySelector('section#slider');
-    slider_content.innerHTML = '';
     tbody_content.innerHTML = '';
     dataCars.forEach((car)=>{
-        const slider_HTML = `<div>${car.model}<div/><div class="slider_image"><img alt="Foto del carro" src="${car.photo}"/></div>`;
         const car_HTML = `<tr>
                             <td>${car.brand}</td>
                             <td>${car.model}</td>
@@ -27,7 +45,7 @@ const printCars = ((dataCars) =>{
                             </td>
                         </tr>`;
         tbody_content.innerHTML += car_HTML;
-        slider_content.innerHTML += slider_HTML;
+        // slider_content.innerHTML += slider_HTML;
     });
 });
 // printCars(JSON.parse(localStorage.getItem("cars")));
@@ -139,3 +157,66 @@ const messageAction = (()=>{
         createCar();
     }
 });
+
+// Aca abajo esta el slider
+// let numberImg = '4';
+// let imgSrc = 'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+// let carrouselInner = document.querySelector('div.carousel-inner');
+// let listCarouselIndicators = `
+// <li data-target="#carouselExampleIndicators" data-slide-to="${numberImg}"></li>
+// `;
+
+// let carrouselItem = `
+// <div class="carousel-item">
+// <img class="d-block w-100" src="${imgSrc}" alt="${numberImg} slide">
+// </div>
+// `;
+
+// carrouselInner.innerHTML += carrouselItem;
+// console.log(carrouselInner)
+
+for(let i = 0; i < cars.length; i++) {
+    let numberImg = i + 1;
+    let imgSrc;
+
+    cars[i]['photo'] === '' ? imgSrc = '' : imgSrc = cars[i]['photo'];
+    
+    let carrouselInner = document.querySelector('div.carousel-inner');
+
+    // let listCarouselIndicators = document.createElement('li');
+    // listCarouselIndicators.setAttribute("data-target", "#carouselExampleIndicators");
+    // listCarouselIndicators.setAttribute("data-slide-to", `${numberImg}`);
+
+    let imG = document.createElement('img');
+    imG.classList.add('d-block', 'w-100');
+    imG.src = `${imgSrc}`;
+    imG.setAttribute('alt', `${numberImg} slide`);
+
+    let carrouselItem = document.createElement('div');
+    carrouselItem.classList.add("carousel-item");
+    if(i === 0) {
+        carrouselItem.classList.add("active")
+    }
+
+    carrouselItem.appendChild(imG);
+    carrouselInner.appendChild(carrouselItem);
+}
+
+// let numberImg = '4';
+// let imgSrc = 'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
+// let carrouselInner = document.querySelector('div.carousel-inner');
+
+// let listCarouselIndicators = document.createElement('li');
+// listCarouselIndicators.setAttribute("data-target", "#carouselExampleIndicators");
+// listCarouselIndicators.setAttribute("data-slide-to", `${numberImg}`);
+
+// let imG = document.createElement('img');
+// imG.classList.add('d-block', 'w-100');
+// imG.src = `${imgSrc}`;
+// imG.setAttribute('alt', `${numberImg} slide`);
+
+// let carrouselItem = document.createElement('div');
+// carrouselItem.classList.add("carousel-item");
+
+// carrouselItem.appendChild(imG);
+// carrouselInner.appendChild(carrouselItem);

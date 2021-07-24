@@ -29,6 +29,11 @@ button.btn-success {
     background-color: red;
 }
 
+/*  */
+.carousel-item img {
+    height: 540px;
+}
+
 @media (max-width: 500px){
     header img {
         width: 80%;
