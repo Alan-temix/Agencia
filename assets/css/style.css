@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 header {
     background-color: black;
 }
@@ -32,6 +38,14 @@ button.btn-success {
 /*  */
 .carousel-item img {
     height: 540px;
+}
+
+div.d-flex {
+    flex-wrap: wrap;
+}
+
+div.set-width {
+    width: 33%;
 }
 
 @media (max-width: 500px){

@@ -30,6 +30,8 @@ let BUTTONSTATUS = 0;
 
 const printCars = ((dataCars) =>{
     const tbody_content = document.getElementById('tbody-cars');
+    let div_cardDeck = document.querySelector('div.card-deck');
+    div_cardDeck.innerHTML = '';
     tbody_content.innerHTML = '';
     dataCars.forEach((car)=>{
         const car_HTML = `<tr>
@@ -44,13 +46,66 @@ const printCars = ((dataCars) =>{
                                 <button class="btn btn-warning" onclick="showFormEditCar(${car.id})"><i class="bi bi-arrow-repeat"></i> Editar</button>
                             </td>
                         </tr>`;
+        let div_html = `
+        <div class="card set-width">
+            <img class="card-img-top" src="${car.photo}" alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">${car.brand}</h5>
+            <p class="card-text">${car.model}</p>
+            <p class="card-text"><small class="text-muted">${car.price}</small></p>
+            <td>
+            <button class="btn btn-danger" onclick="deleteCar(${car.id})"><i class="bi bi-trash"></i> Eliminar</button>
+            <button class="btn btn-warning" onclick="showFormEditCar(${car.id})"><i class="bi bi-arrow-repeat"></i> Editar</button>
+            </td>
+            </div>
+        </div>
+        `
         tbody_content.innerHTML += car_HTML;
+        div_cardDeck.innerHTML += div_html;
+        // 
+        // let htmlFirstDiv = document.createElement('div');
+        // let htmlImg = document.createElement('img');
+        // let htmlSecondDiv = document.createElement('div');
+        // let htmlh5 = document.createElement('h5');
+        // let htmlFirstP = document.createElement('p');
+        // let htmlSecondP = document.createElement('p');
+        // let htmlSmall = document.createElement('small');
+
+        // htmlFirstDiv.classList.add('card', 'set-width');
+
+        // htmlImg.classList.add('card-img-top');
+
+        // htmlImg.src = `${car.photo}`;
+        // htmlImg.setAttribute('alt', 'Card image cap');
+
+        // htmlSecondDiv.classList.add('card-body');
+
+        // htmlh5.classList.add('card-title');
+        // htmlh5.textContent = `${car.brand}`;
+
+        // htmlFirstP.classList.add('card-text');
+        // htmlFirstP.textContent = `${car.model}, ${car.color}, ${car.year}, ${car.price}`;
+
+        // htmlSmall.classList.add('text-muted');
+        // htmlSmall.textContent = `Footer`;
+        // //   Aca uno todo
+
+        // htmlSecondP.appendChild(htmlSmall);
+        // htmlSecondDiv.appendChild(htmlh5);
+        // htmlSecondDiv.appendChild(htmlFirstP);
+        // htmlSecondDiv.appendChild(htmlSecondP);
+
+        // htmlFirstDiv.appendChild(htmlImg);
+        // htmlFirstDiv.appendChild(htmlSecondDiv);
+
+        // div_cardDeck.appendChild(htmlFirstDiv)
+
     });
-    for(let i = 0; i < cars.length; i++) {
+    for(let i = 0; i < dataCars.length; i++) {
         let numberImg = i;
         let imgSrc;
     
-        cars[i]['photo'] === '' ? imgSrc = '' : imgSrc = cars[i]['photo'];
+        dataCars[i]['photo'] === '' ? imgSrc = '' : imgSrc = dataCars[i]['photo'];
         
         let carrouselInner = document.querySelector('div.carousel-inner');
     
@@ -147,6 +202,7 @@ const editCar = ()=>{
     cars[CARID].color = document.getElementById('color').value;
     cars[CARID].year = document.getElementById('year').value;
     cars[CARID].price = document.getElementById('price').value;
+    cars[CARID].photo = document.getElementById('photo').value;
     localStorage.clear();
     localStorage.setItem("cars", JSON.stringify(cars));
     resetForm();
