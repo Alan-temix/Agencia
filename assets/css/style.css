@@ -11,7 +11,11 @@ header {
 header img {
     display: block;
     margin: 0 auto;
-    /* width: 33%; */
+}
+
+.carousel {
+    background-color: black;
+    padding: 2%;
 }
 
 thead tr {
@@ -40,12 +44,24 @@ button.btn-success {
     height: 540px;
 }
 
+.img-size-card {
+    max-height: 270px;
+}
+
+.d-block {
+    border-radius: 30px;
+}
+
 div.container-customize {
-    margin: 0 2%;
+    padding: 0 2%;
 }
 
 .table-responsive td {
     vertical-align: middle;
+}
+
+.card {
+    margin-bottom: 2%;
 }
 
 div.d-flex {

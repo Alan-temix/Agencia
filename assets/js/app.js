@@ -1,27 +1,32 @@
 'use-strict'
 
-// const cars = [
-//     {
-//         id: 0,
-//         brand: 'AnyBrand1',
-//         model: 'AnyModel1',
-//         color: 'blue',
-//         year: 2019,
-//         price: '2000usd',
-//         photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
-//     },
-//     {
-//         id: 1,
-//         brand: 'AnyBrand2',
-//         model: 'AnyModel2',
-//         color: 'red',
-//         year: 2020,
-//         price: '2000usd',
-//         photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
-//     }
-// ];
+let cars = JSON.parse(localStorage.getItem("cars"))
 
-cars = JSON.parse(localStorage.getItem("cars"))
+const defaultData = [
+    {
+        id: 0,
+        brand: 'AnyBrand1',
+        model: 'AnyModel1',
+        color: 'blue',
+        year: 2019,
+        price: '2000usd',
+        photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
+    },
+    {
+        id: 1,
+        brand: 'AnyBrand2',
+        model: 'AnyModel2',
+        color: 'red',
+        year: 2020,
+        price: '2000usd',
+        photo: 'https://motor.elpais.com/wp-content/uploads/2018/12/Bugatti-Chiron-2017-1600-1c-1800x728.jpg'
+    }
+];
+
+if(!cars) {
+    localStorage.setItem("cars", JSON.stringify(defaultData));
+    cars = JSON.parse(localStorage.getItem("cars"))
+}
 
 const CREATE = "create" 
 const EDIT = "edit" 
@@ -45,7 +50,7 @@ const printCars = ((dataCars) =>{
                         </tr>`;
         let div_html = `
         <div id="${car.id}" class="card set-width">
-            <img class="card-img-top" src="${car.photo}" alt="Card image cap">
+            <img class="card-img-top img-size-card" src="${car.photo}" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">${car.brand}</h5>
             <p class="card-text">${car.model}</p>
@@ -66,48 +71,9 @@ const printCars = ((dataCars) =>{
         tbody_content.innerHTML += car_HTML;
         div_cardDeck.innerHTML += div_html;
         div_carrousel.innerHTML += carrousel_html;
-
-        // 
-        // let htmlFirstDiv = document.createElement('div');
-        // let htmlImg = document.createElement('img');
-        // let htmlSecondDiv = document.createElement('div');
-        // let htmlh5 = document.createElement('h5');
-        // let htmlFirstP = document.createElement('p');
-        // let htmlSecondP = document.createElement('p');
-        // let htmlSmall = document.createElement('small');
-
-        // htmlFirstDiv.classList.add('card', 'set-width');
-
-        // htmlImg.classList.add('card-img-top');
-
-        // htmlImg.src = `${car.photo}`;
-        // htmlImg.setAttribute('alt', 'Card image cap');
-
-        // htmlSecondDiv.classList.add('card-body');
-
-        // htmlh5.classList.add('card-title');
-        // htmlh5.textContent = `${car.brand}`;
-
-        // htmlFirstP.classList.add('card-text');
-        // htmlFirstP.textContent = `${car.model}, ${car.color}, ${car.year}, ${car.price}`;
-
-        // htmlSmall.classList.add('text-muted');
-        // htmlSmall.textContent = `Footer`;
-        // //   Aca uno todo
-
-        // htmlSecondP.appendChild(htmlSmall);
-        // htmlSecondDiv.appendChild(htmlh5);
-        // htmlSecondDiv.appendChild(htmlFirstP);
-        // htmlSecondDiv.appendChild(htmlSecondP);
-
-        // htmlFirstDiv.appendChild(htmlImg);
-        // htmlFirstDiv.appendChild(htmlSecondDiv);
-
-        // div_cardDeck.appendChild(htmlFirstDiv)
-
+        console.log(carrousel_html);
     });
 });
-// printCars(JSON.parse(localStorage.getItem("cars")));
 printCars(cars);
 
 const openForm = ()=> {document.getElementById('form-create-cars').classList.remove('d-none'), btnCreate(), BUTTONSTATUS = 1;};
@@ -217,20 +183,3 @@ const messageAction = (()=>{
         createCar();
     }
 });
-
-// Aca abajo esta el slider
-// let numberImg = '4';
-// let imgSrc = 'https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
-// let carrouselInner = document.querySelector('div.carousel-inner');
-// let listCarouselIndicators = `
-// <li data-target="#carouselExampleIndicators" data-slide-to="${numberImg}"></li>
-// `;
-
-// let carrouselItem = `
-// <div class="carousel-item">
-// <img class="d-block w-100" src="${imgSrc}" alt="${numberImg} slide">
-// </div>
-// `;
-
-// carrouselInner.innerHTML += carrouselItem;
-// console.log(carrouselInner)
