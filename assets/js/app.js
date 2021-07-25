@@ -35,23 +35,18 @@ const printCars = ((dataCars) =>{
     tbody_content.innerHTML = '';
     dataCars.forEach((car)=>{
         const car_HTML = `<tr>
-                            <td>${car.brand}</td>
+                            <td><a href="#${car.id}"><img src="${car.photo}" alt="" style="max-width: 100%"></a></td>
                             <td>${car.model}</td>
-                            <td>${car.color}</td>
-                            <td>${car.year}</td>
                             <td>${car.price}</td>
-                            <td><img src="${car.photo}" alt="" width="120px"></td>
-                            <td>
-                                <button class="btn btn-danger" onclick="deleteCar(${car.id})"><i class="bi bi-trash"></i> Eliminar</button>
-                                <button class="btn btn-warning" onclick="showFormEditCar(${car.id})"><i class="bi bi-arrow-repeat"></i> Editar</button>
-                            </td>
                         </tr>`;
         let div_html = `
-        <div class="card set-width">
+        <div id="${car.id}" class="card set-width">
             <img class="card-img-top" src="${car.photo}" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">${car.brand}</h5>
             <p class="card-text">${car.model}</p>
+            <p class="card-text">${car.color}</p>
+            <p class="card-text">${car.year}</p>
             <p class="card-text"><small class="text-muted">${car.price}</small></p>
             <td>
             <button class="btn btn-danger" onclick="deleteCar(${car.id})"><i class="bi bi-trash"></i> Eliminar</button>

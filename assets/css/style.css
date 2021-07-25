@@ -40,16 +40,37 @@ button.btn-success {
     height: 540px;
 }
 
+div.container-customize {
+    margin: 0 2%;
+}
+
+.table-responsive td {
+    vertical-align: middle;
+}
+
 div.d-flex {
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 div.set-width {
-    width: 33%;
+    width: 30%;
 }
 
-@media (max-width: 500px){
+@media (max-width: 750px){
     header img {
         width: 80%;
     }
+    div.d-flex {
+        flex-wrap: column;
+        justify-content: space-around;
+    }
+
+    div.set-width {
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px){
+
 }
